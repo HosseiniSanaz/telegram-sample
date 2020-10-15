@@ -11,10 +11,11 @@ export default class ChatListMockData {
         profilePicture: "",
         profilePictureTextPlaceholder: "SH",
         type: "User",
-        username:"74fdjvhbhj45y738"
+        username: "74fdjvhbhj45y738",
       },
       lastMessage: "Hello",
       lastMessageDateTime: "now",
+      newMessageCount: 2,
     },
     {
       user: {
@@ -31,6 +32,7 @@ export default class ChatListMockData {
       },
       lastMessage: "سلام دختر قشنگم :)",
       lastMessageDateTime: "19:56",
+      newMessageCount: 1,
     },
     {
       user: {
@@ -40,7 +42,7 @@ export default class ChatListMockData {
         status: "last seen at 20:02",
         profilePictureTextPlaceholder: "R",
         type: "User",
-        username:"@FakoFamil"
+        username: "@FakoFamil",
       },
       lastMessage: "سلام به همههههه",
       lastMessageDateTime: "19:56",

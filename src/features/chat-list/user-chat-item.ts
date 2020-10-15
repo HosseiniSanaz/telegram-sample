@@ -4,4 +4,5 @@ export default interface UserChatItem {
   user: UserInfoItem;
   lastMessage: string;
   lastMessageDateTime: string;
+  newMessageCount?: number;
 }

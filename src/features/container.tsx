@@ -25,7 +25,7 @@ export const Container = ({ match }: Props) => {
                 <ChatList />
               </div>
               <div className="col-8">
-                <ChatPage />
+                <ChatPage username={match?.params?.user}/>
               </div>
             </div>
           </DKCardBody>

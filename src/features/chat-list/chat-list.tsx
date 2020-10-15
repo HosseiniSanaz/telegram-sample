@@ -70,6 +70,7 @@ const ChatList = ({ onChangeChat, openNewChat }: Props): ReactElement => {
                   >
                     {cm.lastMessageDateTime}
                   </span>
+                  {cm.newMessageCount && <span className="label label-sm label-success">{cm.newMessageCount}</span>}
                 </div>
               </div>
             </Link>

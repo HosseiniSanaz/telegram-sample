@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
-import BlankAvatar from "assets/img/icons/user-icon.png";
+import "./avatar.scss";
 interface Props {
   imageUrl?: string;
   type?: "circle" | "square";
@@ -12,6 +12,8 @@ interface Props {
   isSymbol?: boolean;
   children?: React.ReactNode | React.ReactNode[];
   hasLink?: boolean;
+  pictureTextPlaceholder?: string;
+  color?: string;
 }
 const DKAvatar = ({
   imageUrl,
@@ -23,33 +25,41 @@ const DKAvatar = ({
   isSymbol = true,
   children,
   hasLink = true,
+  pictureTextPlaceholder = "",
+  color = "symbol-light-info",
 }: Props): ReactElement => {
   return (
-    <div
-      className={
-        (isSymbol ? "symbol symbol-" + size : "image-input ") +
-        (type === "circle" ? " symbol-circle" : "") +
-        (outline ? " image-input-outline" : "") +
-        (className ? ` ${className}` : "")
-      }
-      style={{ minHeight: size + "px" }}
+    <Link
+      to={hasLink ? `/profile${userName ? "/" + userName : ""}` : ""}
+      className={className}
+      style={{ cursor: hasLink ? "pointer" : "auto" }}
     >
-      <Link
-        to={hasLink ? `/profile${userName ? "/" + userName : ""}` : ""}
-        className={className}
-        style={{ cursor: hasLink ? "pointer" : "auto" }}
+      <div
+        className={
+          (isSymbol ? "symbol symbol-" + size : "image-input ") +
+          (type === "circle" ? " symbol-circle" : "") +
+          (outline ? " image-input-outline" : "") +
+          (className ? ` ${className}` : "") +
+          ` ${color}`
+        }
+        style={{ minHeight: size + "px" }}
       >
-        <div
-          className={isSymbol ? " symbol-label " : " image-input-wrapper h-" + size + "px w-" + size + "px"}
-          style={{
-            backgroundImage: `url(${Boolean(imageUrl) ? imageUrl : BlankAvatar})`,
-            backgroundPosition: "center center",
-            backgroundSize: "cover",
-          }}
-        ></div>
+        {Boolean(imageUrl) && (
+          <div
+            className={isSymbol ? " symbol-label " : " image-input-wrapper h-" + size + "px w-" + size + "px"}
+            style={{
+              backgroundImage: `url(${Boolean(imageUrl) ? imageUrl : ""})`,
+              backgroundPosition: "center center",
+              backgroundSize: "cover",
+            }}
+          ></div>
+        )}
+        {!Boolean(imageUrl) && (
+          <div className="font-size-h6 symbol-label font-weight-bolder">{pictureTextPlaceholder}</div>
+        )}
         {children}
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 export default DKAvatar;

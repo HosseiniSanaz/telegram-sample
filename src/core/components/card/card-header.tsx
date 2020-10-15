@@ -5,12 +5,12 @@ interface DKCardProps extends React.HTMLAttributes<HTMLDivElement> {
   subtitle?: string;
   headerToolbar?: React.ReactNode;
   className?: string;
-  hasComplexHeader: boolean;
+  hasComplexHeader?: boolean;
   noBorder?: boolean;
 }
 
 export function DKCardHeader({
-  className,
+  className = "",
   children,
   headerToolbar,
   hasComplexHeader = false,

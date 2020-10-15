@@ -1,4 +1,4 @@
-import { Home } from "features/Home/Home";
+import { Container } from "features/container";
 import React from "react";
 import { HashRouter as Router } from "react-router-dom";
 import "./App.scss";
@@ -14,7 +14,7 @@ export default class APP extends React.Component<{}> {
     return (
       <AppContextProvider>
         <Router>
-          <Home></Home>
+          <Container />
         </Router>
       </AppContextProvider>
     );

@@ -1,7 +1,7 @@
 import UserChatItem from "./user-chat-item";
 
 export default class ChatListMockData {
-  public static Comments: UserChatItem[] = [
+  public static chats: UserChatItem[] = [
     {
       user: {
         id: 1,

@@ -1,0 +1,57 @@
+.symbol {
+  display: inline-block;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  position: relative;
+  border-radius: 0.42rem;
+}
+
+.symbol.symbol-50 .symbol-label {
+  width: 50px;
+  height: 50px;
+}
+
+.symbol-group.symbol-hover .symbol {
+  cursor: pointer;
+}
+
+.symbol.symbol-circle {
+  border-radius: 50% !important;
+}
+
+.symbol.symbol-circle .symbol-label {
+  border-radius: 50%;
+}
+
+.symbol .symbol-label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-weight: 500;
+  line-height: 0;
+  color: #3f4254;
+  background-color: #f3f6f9;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 0.42rem;
+}
+
+.symbol.symbol-light-success .symbol-label {
+  background-color: #c9f7f5;
+  color: #1bc5bd;
+}
+.symbol.symbol-light-info .symbol-label {
+  background-color: #eee5ff;
+  color: #8950fc;
+}
+.symbol.symbol-light-danger .symbol-label {
+  background-color: #ffe2e5;
+  color: #f64e60;
+}

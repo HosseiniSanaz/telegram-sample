@@ -1,4 +1,5 @@
-import { Home } from "features/Home/Home";
+import { Container } from "features/container";
+// import { Home } from "features/Home/Home";
 
 export interface RouteTypes {
   exact: boolean;
@@ -7,10 +8,20 @@ export interface RouteTypes {
   parentPath?: string;
 }
 const routes: RouteTypes[] = [
+  // {
+  //   exact: true,
+  //   path: "/",
+  //   component: Container,
+  // },
   {
     exact: true,
-    path: "/",
-    component: Home,
+    path: "/chat",
+    component: Container,
+  },
+  {
+    exact: true,
+    path: "/chat/:user",
+    component: Container,
   },
 ];
 

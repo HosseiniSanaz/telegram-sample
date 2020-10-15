@@ -30,7 +30,7 @@ const DKAvatar = ({
 }: Props): ReactElement => {
   return (
     <Link
-      to={hasLink ? `/profile${userName ? "/" + userName : ""}` : ""}
+      to={hasLink ? `/chat/${userName ? userName : ""}` : ""}
       className={className}
       style={{ cursor: hasLink ? "pointer" : "auto" }}
     >

@@ -1,4 +1,6 @@
 $dk-font: IRANYekan, Poppins, sans-serif;
+$tg-primary: #3a6d99;
+$tg-secondary: #6490b1;
 
 body {
   margin: 0;
@@ -6,4 +8,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f6f6f6;
+}
+
+.telegram-primary {
+  background-color: $tg-primary !important;
+  color: #fff !important;
+}
+
+.telegram-secondary {
+  background-color: $tg-secondary !important;
+  color: #fff;
 }

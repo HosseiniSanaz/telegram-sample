@@ -7,6 +7,7 @@ interface DKCardProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   hasComplexHeader?: boolean;
   noBorder?: boolean;
+  textColor?: string;
 }
 
 export function DKCardHeader({
@@ -17,13 +18,14 @@ export function DKCardHeader({
   noBorder = false,
   title = "",
   subtitle = "",
+  textColor = "",
   ...other
 }: DKCardProps): JSX.Element {
   return (
     <div className={"card-header " + (noBorder ? "border-0 " : "") + className}>
       {!hasComplexHeader && (
         <>
-          <h3 className={"card-title " + className}>
+          <h3 className={"card-title " + (textColor ? "text-" + textColor : "")}>
             {title}
             <small>{" " + subtitle}</small>
           </h3>

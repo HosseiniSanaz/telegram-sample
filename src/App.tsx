@@ -1,10 +1,9 @@
-// import { Container } from "features/container";
 import React from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.scss";
-import { Context } from "./AppContext";
+import { HashRouter as Router } from "react-router-dom";
 import { AppContextProvider } from "./AppContextProvider";
-import routes from "./routes";
+import { Context } from "./AppContext";
+import { AppContainer } from "./features/app-container/app-container";
+import "./App.scss";
 export default class APP extends React.Component<{}> {
   public constructor(props: any) {
     super(props);
@@ -14,11 +13,7 @@ export default class APP extends React.Component<{}> {
     return (
       <AppContextProvider>
         <Router>
-          <Switch>
-            {routes.map(route => (
-              <Route key={route.path} {...route} />
-            ))}
-          </Switch>
+          <AppContainer />
         </Router>
       </AppContextProvider>
     );

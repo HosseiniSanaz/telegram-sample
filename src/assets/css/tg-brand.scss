@@ -1,0 +1,18 @@
+$dk-font: IRANYekan, Poppins, sans-serif;
+$tg-primary: #3a6d99;
+$tg-secondary: #6490b1;
+$tg-text-color: #2e97f1;
+
+.tg-primary {
+  background-color: $tg-primary !important;
+  color: #fff !important;
+}
+
+.tg-secondary {
+  background-color: $tg-secondary !important;
+  color: #fff;
+}
+
+.tg-text-color {
+  color: $tg-text-color !important;
+}

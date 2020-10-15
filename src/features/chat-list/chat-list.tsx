@@ -33,23 +33,23 @@ const ChatList = ({ onChangeChat, openNewChat }: Props): ReactElement => {
       <div className="card-scroll h-500px">
         {chatItems.map((cm: UserChatItem, index: number) => {
           return (
-            <Link to={`/chat/${cm.user.username}`}>
+            <Link to={`/chat/${cm.user.username}`} key={"chat-item-" + index}>
               <div
                 key={index}
                 className={
                   "d-flex align-items-start justify-content-between p-3 " +
-                  (selectedChatId === cm.user.id ? "telegram-secondary" : "")
+                  (selectedChatId === cm.user.id ? "tg-secondary" : "")
                 }
                 onClick={() => setSelectedChatId(cm.user.id)}
               >
                 <div className="d-flex align-items-center">
                   <DKAvatar
+                    hasLink={false}
                     className="mr-2"
                     imageUrl={cm.user.profilePicture}
                     pictureTextPlaceholder={cm.user.profilePictureTextPlaceholder}
                     size={50}
                     type="circle"
-                    userName={cm.user.username}
                   />
                   <div className="d-flex flex-column">
                     <span

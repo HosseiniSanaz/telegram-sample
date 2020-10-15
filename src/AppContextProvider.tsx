@@ -1,17 +1,24 @@
+import UserInfoItem from "entities/user-info-item";
 import * as React from "react";
 import { Component } from "react";
 import { AppContextState, Context } from "./AppContext";
 
 class AppContextProvider extends Component<{}, AppContextState> {
   state: AppContextState = {
-    impersonated: false,
+    user: {
+      id: 0,
+      name: "",
+      username: "",
+      type: "User",
+      profilePictureTextPlaceholder: "",
+    },
   };
 
-  setImpersonated = (userId: number): void => {
+  setUser = (userInfo: UserInfoItem): void => {
     this.setState(prevState => {
       return {
         ...prevState,
-        impersonated: true,
+        user: userInfo,
       };
     });
   };
@@ -21,7 +28,7 @@ class AppContextProvider extends Component<{}, AppContextState> {
         value={{
           state: this.state,
           actions: {
-            setImpersonated: this.setImpersonated,
+            setUser: this.setUser,
           },
         }}
       >

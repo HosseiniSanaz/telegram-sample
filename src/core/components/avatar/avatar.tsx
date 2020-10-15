@@ -28,38 +28,46 @@ const DKAvatar = ({
   pictureTextPlaceholder = "",
   color = "symbol-light-info",
 }: Props): ReactElement => {
-  return (
-    <Link
-      to={hasLink ? `/chat/${userName ? userName : ""}` : ""}
-      className={className}
-      style={{ cursor: hasLink ? "pointer" : "auto" }}
+  const avatarElement: any = (
+    <div
+      className={
+        (isSymbol ? "symbol symbol-" + size : "image-input ") +
+        (type === "circle" ? " symbol-circle" : "") +
+        (outline ? " image-input-outline" : "") +
+        (className ? ` ${className}` : "") +
+        ` ${color}`
+      }
+      style={{ minHeight: size + "px" }}
     >
-      <div
-        className={
-          (isSymbol ? "symbol symbol-" + size : "image-input ") +
-          (type === "circle" ? " symbol-circle" : "") +
-          (outline ? " image-input-outline" : "") +
-          (className ? ` ${className}` : "") +
-          ` ${color}`
-        }
-        style={{ minHeight: size + "px" }}
-      >
-        {Boolean(imageUrl) && (
-          <div
-            className={isSymbol ? " symbol-label " : " image-input-wrapper h-" + size + "px w-" + size + "px"}
-            style={{
-              backgroundImage: `url(${Boolean(imageUrl) ? imageUrl : ""})`,
-              backgroundPosition: "center center",
-              backgroundSize: "cover",
-            }}
-          ></div>
-        )}
-        {!Boolean(imageUrl) && (
-          <div className="font-size-h6 symbol-label font-weight-bolder">{pictureTextPlaceholder}</div>
-        )}
-        {children}
-      </div>
-    </Link>
+      {Boolean(imageUrl) && (
+        <div
+          className={isSymbol ? " symbol-label " : " image-input-wrapper h-" + size + "px w-" + size + "px"}
+          style={{
+            backgroundImage: `url(${Boolean(imageUrl) ? imageUrl : ""})`,
+            backgroundPosition: "center center",
+            backgroundSize: "cover",
+          }}
+        ></div>
+      )}
+      {!Boolean(imageUrl) && (
+        <div className="font-size-h6 symbol-label font-weight-bolder">{pictureTextPlaceholder}</div>
+      )}
+      {children}
+    </div>
+  );
+  return (
+    <>
+      {hasLink && (
+        <Link
+          to={`/chat/${userName ? userName : ""}`}
+          className={className}
+          style={{ cursor: hasLink ? "pointer" : "auto" }}
+        >
+          {avatarElement}
+        </Link>
+      )}
+      {!hasLink && avatarElement}
+    </>
   );
 };
 export default DKAvatar;

@@ -1,6 +1,4 @@
-import { Container } from "features/container";
-// import { Home } from "features/Home/Home";
-
+import { Container } from "features/tg-container/tg-container";
 export interface RouteTypes {
   exact: boolean;
   path: string;
@@ -8,11 +6,6 @@ export interface RouteTypes {
   parentPath?: string;
 }
 const routes: RouteTypes[] = [
-  // {
-  //   exact: true,
-  //   path: "/",
-  //   component: Container,
-  // },
   {
     exact: true,
     path: "/chat",

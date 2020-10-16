@@ -3,15 +3,17 @@
   overflow: scroll;
 }
 .card-scroll::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
-
+.card-scroll-thick::-webkit-scrollbar {
+  width: 10px !important;
+}
 .card-scroll::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: #eef0f8;
+  background-color: #ccc;
 }
 
 .card-scroll::-webkit-scrollbar-track {
   border-radius: 4px;
-  background-color: #ffffff;
+  background-color: rgba(216, 223, 225, 0.45);
 }

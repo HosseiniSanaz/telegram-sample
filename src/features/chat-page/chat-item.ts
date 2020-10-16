@@ -4,4 +4,5 @@ export default interface ChatItem {
   sender: UserInfoItem;
   text: string;
   repliedTo?: ChatItem;
+  sendDateTime: string;
 }

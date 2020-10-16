@@ -1,12 +1,12 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import UserChatItem from "./user-chat-item";
-// import { DKCardBody, DKCardHeader } from "../../core/components/card";
 import { useService } from "hooks/useService";
 import ChatListServices from "./chat-list-services";
 import DKAvatar from "core/components/avatar/avatar";
 import "./chat-list.scss";
-import { Card, Form, InputGroup } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import SearchBox from "./search-box";
 interface Props {
   onChangeChat?: (chatId?: number) => void;
   openNewChat?: () => void;
@@ -21,13 +21,8 @@ const ChatList = ({ onChangeChat, openNewChat }: Props): ReactElement => {
 
   return (
     <div>
-      <Card.Header title="teada" className="border-0 p-4">
-        <InputGroup className="mb-2">
-          <InputGroup.Prepend>
-            <InputGroup.Text>@</InputGroup.Text>
-          </InputGroup.Prepend>
-          <Form.Control type="text" placeholder="search" />
-        </InputGroup>
+      <Card.Header className="border-0 p-4">
+        <SearchBox />
       </Card.Header>
 
       <div className="card-scroll h-500px">

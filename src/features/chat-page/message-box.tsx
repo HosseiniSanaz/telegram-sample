@@ -23,7 +23,7 @@ const MessageBox = ({ targetUser }: Props) => {
         <div className="d-flex flex-column flex-grow-1">
           <Form.Control type="text" placeholder="Write a message..." />
           <div className="d-flex justify-content-end mt-2">
-            <a className="font-weight-bolder tg-text-color font-size-md">SEND</a>
+            <a className="font-weight-bolder tg-text-color font-size-md cursor-pointer">SEND</a>
           </div>
         </div>
         <DKAvatar

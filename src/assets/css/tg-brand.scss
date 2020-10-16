@@ -1,7 +1,8 @@
 $dk-font: IRANYekan, Poppins, sans-serif;
 $tg-primary: #3a6d99;
 $tg-secondary: #6490b1;
-$tg-text-color: #2e97f1;
+$tg-text-color: #499dd9;
+$tg-user-text-color: #3a6d99;
 
 .tg-primary {
   background-color: $tg-primary !important;
@@ -15,4 +16,8 @@ $tg-text-color: #2e97f1;
 
 .tg-text-color {
   color: $tg-text-color !important;
+}
+
+.tg-user-text-color {
+  color: $tg-user-text-color !important;
 }

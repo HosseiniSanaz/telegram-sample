@@ -1,9 +1,9 @@
+import React from "react";
 import UserInfoItem from "entities/user-info-item";
-import { useService } from "hooks/useService";
-import React, { useEffect } from "react";
+import ChatContainer from "./chat-container/chat-container";
 import MessageBox from "./message-box";
-import ChatPageServices from "./chat-page-services";
-import ChatItem from "./chat-item";
+import "./chat-page.scss";
+
 interface Props {
   username?: string;
 }
@@ -20,21 +20,17 @@ const ChatPage = ({ username }: Props) => {
     type: "User",
     username: "74fdjvhbhj45y738",
   };
-  const allChat = useService<ChatItem[]>(ChatPageServices.getChat(username || targetUser.username));
-  useEffect(() => {
-    if (allChat.status === "loaded") console.log(allChat.payload);
-  }, [allChat.status]);
+
   return (
     <div className="h-100">
       {!Boolean(username) && (
         <div className="h-100 d-flex justify-content-center align-items-center">
-          <span className="text-muted font-size-lg">Please Select a Message...</span>
+          <span className="text-muted font-size-lg">Please select a chat to start messaging</span>
         </div>
       )}
       {Boolean(username) && (
         <>
-          {username}
-
+          <ChatContainer username={username || targetUser.username} />
           <MessageBox targetUser={targetUser} />
         </>
       )}

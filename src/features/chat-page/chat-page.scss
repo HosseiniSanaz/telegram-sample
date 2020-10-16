@@ -1,1 +1,10 @@
+@import "../../assets/css/tg-brand.scss";
 
+.tg-user-text:hover {
+  text-decoration: underline !important;
+  text-decoration-color: $tg-user-text-color !important;
+}
+
+.message-text {
+  white-space: pre-line !important;
+}

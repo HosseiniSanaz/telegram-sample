@@ -32,12 +32,12 @@ const MessageBox = ({ targetUser, sendMessage, repliedToMessage, removeReply }: 
   };
 
   return (
-    <div className="position-absolute bottom-0 w-100 my-5">
+    <div className="position-absolute bottom-0 w-100 mt-5 mb-2">
       {repliedToMessage && (
         <div className="w-50 d-flex justify-content-between align-items-center m-auto">
-          <Chat chatItem={repliedToMessage} isRepliedMessage={true} />
+          <Chat chatItem={repliedToMessage} isRepliedMessage={true} className="ml-n10" />
           <div className="d-flex align-self-start pt-3 cursor-pointer" onClick={removeReply}>
-            <i className="fa fa-times"></i>
+            <i className="fa fa-times font-size-h2 text-hover-primary"></i>
           </div>
         </div>
       )}

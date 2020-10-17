@@ -21,7 +21,7 @@ const TGHeader = ({ username }: Props) => {
         </div>
         {username && (
           <div
-            className="col-8 d-flex align-items-center"
+            className="col-8 d-flex align-items-center cursor-pointer"
             onClick={() => appContext?.actions.showProfile(true, targetUser)}
           >
             <div className="d-flex align-items-center">

@@ -6,15 +6,16 @@ interface Props {
   chatItem?: ChatItem;
   isRepliedMessage?: boolean;
   onReply?: (repliedMessage: ChatItem) => void;
+  className?: string;
 }
 
-const Chat = ({ chatItem, isRepliedMessage, onReply }: Props) => {
+const Chat = ({ chatItem, isRepliedMessage, onReply, className }: Props) => {
   const appContext = useContext(Context);
 
   return (
     <>
       {chatItem && (
-        <div className={"d-flex justify-content-between p-3 "}>
+        <div className={"d-flex justify-content-between p-3 " + className}>
           <div className="d-flex align-items-start">
             {!isRepliedMessage && (
               <DKAvatar

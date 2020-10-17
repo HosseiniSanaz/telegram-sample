@@ -7,9 +7,10 @@ import ChatItem from "./chat-item";
 import ChatUtil from "utilities/chat-utilities";
 interface Props {
   username?: string;
+  emptyUnreadMessage: (username?: string) => void;
 }
 
-const ChatPage = ({ username }: Props) => {
+const ChatPage = ({ username, emptyUnreadMessage }: Props) => {
   const [targetUser, setTargetUser] = useState<UserInfoItem>({
     id: 0,
     name: "Sanaz",
@@ -21,6 +22,7 @@ const ChatPage = ({ username }: Props) => {
   const [newMessage, setNewMessage] = useState<ChatItem>();
   const [replyMessage, setReplyMessage] = useState<ChatItem>();
   useEffect(() => {
+    emptyUnreadMessage(username);
     setTargetUser(ChatUtil.getCurrentUser(username));
   }, [username]);
   const getMessage = (message: ChatItem) => {

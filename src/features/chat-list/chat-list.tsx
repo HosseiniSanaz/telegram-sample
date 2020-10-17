@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 import SearchBox from "./search-box";
 import ChatUtil from "utilities/chat-utilities";
 import { Context } from "AppContext";
-// interface Props {
-//   openNewChat?: () => void;
-// }
-const ChatList = (): ReactElement => {
+interface Props {
+  emptyUserEmptyUnread?: string;
+}
+const ChatList = ({ emptyUserEmptyUnread }: Props): ReactElement => {
   const appContext = useContext(Context);
   const [chatItems, setChatItems] = useState<UserChatItem[]>([]);
   const [selectedChatId, setSelectedChatId] = useState<number>(0);
@@ -20,6 +20,16 @@ const ChatList = (): ReactElement => {
   useEffect(() => {
     if (chatList.status === "loaded") setChatItems(chatList.payload);
   }, [chatList.status]);
+
+  useEffect(() => {
+    if (chatItems.length && emptyUserEmptyUnread) {
+      const changedChats = chatItems.map(chat => {
+        if (emptyUserEmptyUnread === chat.user.username) chat.newMessageCount = 0;
+        return chat;
+      });
+      setChatItems(changedChats);
+    }
+  }, [emptyUserEmptyUnread]);
 
   const onFilterChats = (searchTerm: string) => {
     if (chatList.status === "loaded") {
@@ -86,7 +96,7 @@ const ChatList = (): ReactElement => {
                   >
                     {cm.lastMessageDateTime}
                   </span>
-                  {cm.newMessageCount && (
+                  {Boolean(cm.newMessageCount) && (
                     <span className="label label-sm label-success mt-1">{cm.newMessageCount}</span>
                   )}
                 </div>

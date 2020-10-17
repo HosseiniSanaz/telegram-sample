@@ -13,6 +13,7 @@ interface Props {
   pictureTextPlaceholder?: string;
   color?: string;
   onShowProfile?: () => void;
+  isSelf?: boolean;
 }
 const DKAvatar = ({
   imageUrl,
@@ -26,6 +27,7 @@ const DKAvatar = ({
   pictureTextPlaceholder = "",
   color = "symbol-light-info",
   onShowProfile,
+  isSelf = false,
 }: Props): ReactElement => {
   return (
     <div
@@ -35,26 +37,36 @@ const DKAvatar = ({
         (outline ? " image-input-outline" : "") +
         (className ? ` ${className}` : "") +
         (hasLink ? " cursor-pointer" : "") +
-        ` ${color}`
+        ` ${isSelf ? "symbol-primary" : color}`
       }
       style={{ minHeight: size + "px" }}
       onClick={() => {
         if (hasLink && onShowProfile) onShowProfile();
       }}
     >
-      {Boolean(imageUrl) && (
-        <div
-          className={isSymbol ? " symbol-label " : " image-input-wrapper h-" + size + "px w-" + size + "px"}
-          style={{
-            backgroundImage: `url(${Boolean(imageUrl) ? imageUrl : ""})`,
-            backgroundPosition: "center center",
-            backgroundSize: "cover",
-          }}
-        ></div>
+      {isSelf && (
+        <div className="font-size-h6 symbol-label font-weight-bolder">
+          <i className="fa fa-bookmark text-white font-size-h1"> </i>
+        </div>
       )}
-      {!Boolean(imageUrl) && (
-        <div className="font-size-h6 symbol-label font-weight-bolder">{pictureTextPlaceholder}</div>
+      {!isSelf && (
+        <>
+          {Boolean(imageUrl) && (
+            <div
+              className={isSymbol ? " symbol-label " : " image-input-wrapper h-" + size + "px w-" + size + "px"}
+              style={{
+                backgroundImage: `url(${Boolean(imageUrl) ? imageUrl : ""})`,
+                backgroundPosition: "center center",
+                backgroundSize: "cover",
+              }}
+            ></div>
+          )}
+          {!Boolean(imageUrl) && (
+            <div className="font-size-h6 symbol-label font-weight-bolder">{pictureTextPlaceholder}</div>
+          )}
+        </>
       )}
+
       {children}
     </div>
   );

@@ -5,6 +5,7 @@ import UserInfoItem from "../../entities/user-info-item";
 import { Context } from "../../AppContext";
 import ChatItem from "./chat-item";
 import Util from "utilities/utilities";
+import ChatUtil from "utilities/chat-utilities";
 interface Props {
   targetUser: UserInfoItem;
   sendMessage: (message: ChatItem) => void;
@@ -50,9 +51,9 @@ const MessageBox = ({ targetUser, sendMessage }: Props) => {
             }}
           />
           <div className="d-flex justify-content-end mt-2">
-            <a className="font-weight-bolder tg-text-color font-size-md cursor-pointer" onClick={sendItem}>
+            <span className="font-weight-bolder tg-text-color font-size-md cursor-pointer" onClick={sendItem}>
               SEND
-            </a>
+            </span>
           </div>
         </div>
         <DKAvatar
@@ -62,6 +63,7 @@ const MessageBox = ({ targetUser, sendMessage }: Props) => {
           type="circle"
           className="ml-4"
           onShowProfile={() => appContext?.actions.showProfile(true, targetUser)}
+          isSelf={ChatUtil.isSelf(appContext?.state.user.username || "", targetUser.username)}
         />
       </div>
     </div>

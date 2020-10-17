@@ -10,4 +10,5 @@ export default interface UserInfoItem {
   type: "User" | "Group";
   role?: string;
   members?: UserInfoItem[];
+  isGroupAdmin?: boolean;
 }

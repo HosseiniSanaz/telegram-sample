@@ -10,7 +10,7 @@ const ProfileContainer = (): ReactElement => {
   return (
     <Modal show={appContext?.state.showProfile} onHide={onCloseProfile} animation={false} centered={true}>
       <Modal.Body className="p-0">
-        <ProfileHeader userInfo={appContext?.state.currentUserProfile} />
+        <ProfileHeader />
         <ProfileInfo />
       </Modal.Body>
     </Modal>

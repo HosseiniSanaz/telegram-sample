@@ -12,7 +12,7 @@ const SearchBox = ({ onSearch }: Props): ReactElement => {
           <i className="fas fa-search icon-md"></i>
         </InputGroup.Text>
       </InputGroup.Prepend>
-      <Form.Control type="text" placeholder="search" />
+      <Form.Control type="text" placeholder="search" onChange={(ev: any) => onSearch && onSearch(ev.target.value)} />
     </InputGroup>
   );
 };

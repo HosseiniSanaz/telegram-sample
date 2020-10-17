@@ -1,12 +1,10 @@
 import * as React from "react";
 import { ReactElement } from "react";
-import { Link } from "react-router-dom";
 import "./avatar.scss";
 interface Props {
   imageUrl?: string;
   type?: "circle" | "square";
   size: number;
-  userName?: string;
   outline?: boolean;
   className?: string;
   isSymbol?: boolean;
@@ -14,12 +12,12 @@ interface Props {
   hasLink?: boolean;
   pictureTextPlaceholder?: string;
   color?: string;
+  onShowProfile?: () => void;
 }
 const DKAvatar = ({
   imageUrl,
   type = "square",
   size,
-  userName = "",
   outline = false,
   className,
   isSymbol = true,
@@ -27,17 +25,22 @@ const DKAvatar = ({
   hasLink = true,
   pictureTextPlaceholder = "",
   color = "symbol-light-info",
+  onShowProfile,
 }: Props): ReactElement => {
-  const avatarElement: any = (
+  return (
     <div
       className={
         (isSymbol ? "symbol symbol-" + size : "image-input ") +
         (type === "circle" ? " symbol-circle" : "") +
         (outline ? " image-input-outline" : "") +
         (className ? ` ${className}` : "") +
+        (hasLink ? " cursor-pointer" : "") +
         ` ${color}`
       }
       style={{ minHeight: size + "px" }}
+      onClick={() => {
+        if (hasLink && onShowProfile) onShowProfile();
+      }}
     >
       {Boolean(imageUrl) && (
         <div
@@ -54,20 +57,6 @@ const DKAvatar = ({
       )}
       {children}
     </div>
-  );
-  return (
-    <>
-      {hasLink && (
-        <Link
-          to={`/chat/${userName ? userName : ""}`}
-          className={className}
-          style={{ cursor: hasLink ? "pointer" : "auto" }}
-        >
-          {avatarElement}
-        </Link>
-      )}
-      {!hasLink && avatarElement}
-    </>
   );
 };
 export default DKAvatar;

@@ -8,7 +8,9 @@ const SearchBox = ({ onSearch }: Props): ReactElement => {
   return (
     <InputGroup className="mb-2">
       <InputGroup.Prepend>
-        <InputGroup.Text>@</InputGroup.Text>
+        <InputGroup.Text className="px-3">
+          <i className="fas fa-search icon-md"></i>
+        </InputGroup.Text>
       </InputGroup.Prepend>
       <Form.Control type="text" placeholder="search" />
     </InputGroup>

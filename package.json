@@ -40,6 +40,7 @@
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
     "@baristalabs/craco-raw-loader": "^1.2.0",
     "@craco/craco": "^5.6.2",
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@jackwilsdon/craco-use-babelrc": "^1.0.0",
     "@navikt/craco-plugins": "^1.0.1",
     "@types/debug": "^4.1.5",

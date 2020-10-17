@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import ChatItem from "../chat-item";
 import DKAvatar from "core/components/avatar/avatar";
-import { Link } from "react-router-dom";
+import { Context } from "AppContext";
 interface Props {
   chatItem: ChatItem;
   isRepliedMessage?: boolean;
 }
 
 const Chat = ({ chatItem, isRepliedMessage }: Props) => {
+  const appContext = useContext(Context);
   return (
     <div
       className={"d-flex justify-content-between p-3 "}
@@ -21,13 +22,14 @@ const Chat = ({ chatItem, isRepliedMessage }: Props) => {
             pictureTextPlaceholder={chatItem.sender?.profilePictureTextPlaceholder}
             size={45}
             type="circle"
+            onShowProfile={() => appContext?.actions.showProfile(true, chatItem.sender)}
           />
         )}
         {isRepliedMessage && <span className="bullet bullet-bar tg-secondary align-self-stretch mr-3"></span>}
         <div className="d-flex flex-column">
-          <Link to={`/chat/${chatItem.sender?.username}`} className="tg-user-text">
+          <div className="tg-user-text cursor-pointer" onClick={() => appContext?.actions.showProfile(true, chatItem.sender)}>
             <span className={"font-weight-bold font-size-lg tg-user-text-color "}>{chatItem.sender?.name}</span>
-          </Link>
+          </div>
           {chatItem.repliedTo && <Chat chatItem={chatItem.repliedTo} isRepliedMessage={true} />}
           <span
             className={"font-size-md text-dark " + (isRepliedMessage ? "text-truncate d-inline-block" : "message-text")}

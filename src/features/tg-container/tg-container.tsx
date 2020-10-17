@@ -2,6 +2,7 @@ import { DKCard, DKCardBody, DKCardHeader } from "core/components/card";
 import React from "react";
 import ChatList from "../chat-list/chat-list";
 import ChatPage from "../chat-page/chat-page";
+import ProfileContainer from "features/profile/profile-container";
 interface Props {
   match?: any;
 }
@@ -22,6 +23,7 @@ export const Container = ({ match }: Props) => {
             </div>
           </DKCardBody>
         </DKCard>
+        <ProfileContainer />
       </div>
     </div>
   );

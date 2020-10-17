@@ -4,14 +4,17 @@ import { Component } from "react";
 import { AppContextState, Context } from "./AppContext";
 
 class AppContextProvider extends Component<{}, AppContextState> {
+  initialUser: UserInfoItem = {
+    id: 0,
+    name: "",
+    username: "",
+    type: "User",
+    profilePictureTextPlaceholder: "",
+  };
   state: AppContextState = {
-    user: {
-      id: 0,
-      name: "",
-      username: "",
-      type: "User",
-      profilePictureTextPlaceholder: "",
-    },
+    user: this.initialUser,
+    showProfile: false,
+    currentUserProfile: this.initialUser,
   };
 
   setUser = (userInfo: UserInfoItem): void => {
@@ -22,6 +25,15 @@ class AppContextProvider extends Component<{}, AppContextState> {
       };
     });
   };
+  showProfile = (showProfile: boolean, currentUserProfile?: UserInfoItem): void => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        showProfile,
+        currentUserProfile: currentUserProfile || prevState.currentUserProfile,
+      };
+    });
+  };
   render(): JSX.Element {
     return (
       <Context.Provider
@@ -29,6 +41,7 @@ class AppContextProvider extends Component<{}, AppContextState> {
           state: this.state,
           actions: {
             setUser: this.setUser,
+            showProfile: this.showProfile,
           },
         }}
       >

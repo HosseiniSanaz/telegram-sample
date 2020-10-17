@@ -17,15 +17,16 @@ const Chat = ({ chatItem, isRepliedMessage }: Props) => {
         {!isRepliedMessage && (
           <DKAvatar
             className="mr-2"
-            imageUrl={chatItem.sender.profilePicture}
-            pictureTextPlaceholder={chatItem.sender.profilePictureTextPlaceholder}
+            imageUrl={chatItem.sender?.profilePicture}
+            pictureTextPlaceholder={chatItem.sender?.profilePictureTextPlaceholder}
             size={45}
             type="circle"
           />
         )}
+        {isRepliedMessage && <span className="bullet bullet-bar tg-secondary align-self-stretch mr-3"></span>}
         <div className="d-flex flex-column">
-          <Link to={`/chat/${chatItem.sender.username}`} className="tg-user-text">
-            <span className={"font-weight-bold font-size-lg tg-user-text-color "}>{chatItem.sender.name}</span>
+          <Link to={`/chat/${chatItem.sender?.username}`} className="tg-user-text">
+            <span className={"font-weight-bold font-size-lg tg-user-text-color "}>{chatItem.sender?.name}</span>
           </Link>
           {chatItem.repliedTo && <Chat chatItem={chatItem.repliedTo} isRepliedMessage={true} />}
           <span

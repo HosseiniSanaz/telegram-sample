@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import UserInfoItem from "entities/user-info-item";
 import ChatContainer from "./chat-container/chat-container";
 import MessageBox from "./message-box";
 import "./chat-page.scss";
+import ChatItem from "./chat-item";
 
 interface Props {
   username?: string;
@@ -21,6 +22,10 @@ const ChatPage = ({ username }: Props) => {
     username: "74fdjvhbhj45y738",
   };
 
+  const [newMessage, setNewMessage] = useState<ChatItem>();
+  const getMessage = (message: ChatItem) => {
+    setNewMessage(message);
+  };
   return (
     <div className="h-100">
       {!Boolean(username) && (
@@ -30,8 +35,8 @@ const ChatPage = ({ username }: Props) => {
       )}
       {Boolean(username) && (
         <>
-          <ChatContainer username={username || targetUser.username} />
-          <MessageBox targetUser={targetUser} />
+          <ChatContainer username={username || targetUser.username} newMessage={newMessage} />
+          <MessageBox targetUser={targetUser} sendMessage={getMessage} />
         </>
       )}
     </div>

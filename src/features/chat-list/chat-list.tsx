@@ -54,7 +54,13 @@ const ChatList = ({ onChangeChat, openNewChat }: Props): ReactElement => {
                     >
                       {cm.user.name}
                     </span>
-                    <span className={"font-size-sm " + (selectedChatId === cm.user.id ? "" : "text-muted")}>
+                    <span
+                      className={
+                        "font-size-sm text-truncate d-inline-block " +
+                        (selectedChatId === cm.user.id ? "" : "text-muted")
+                      }
+                      style={{ maxWidth: "250px" }}
+                    >
                       {cm.lastMessage}
                     </span>
                   </div>
@@ -65,7 +71,9 @@ const ChatList = ({ onChangeChat, openNewChat }: Props): ReactElement => {
                   >
                     {cm.lastMessageDateTime}
                   </span>
-                  {cm.newMessageCount && <span className="label label-sm label-success">{cm.newMessageCount}</span>}
+                  {cm.newMessageCount && (
+                    <span className="label label-sm label-success mt-1">{cm.newMessageCount}</span>
+                  )}
                 </div>
               </div>
             </Link>

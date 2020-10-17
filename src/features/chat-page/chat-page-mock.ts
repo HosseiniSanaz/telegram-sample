@@ -3,7 +3,6 @@ import ChatItem from "./chat-item";
 export default class ChatPageMockData {
   public static chat: ChatItem[] = [
     {
-      id: "sbfjsdh",
       sender: {
         id: 1001,
         name: "Sanaz Khanummm",
@@ -19,7 +18,6 @@ export default class ChatPageMockData {
       sendDateTime: "9:42:50 PM",
     },
     {
-      id: "grgergw",
       sender: {
         id: 1,
         name: "Sanaz",
@@ -35,7 +33,6 @@ export default class ChatPageMockData {
       sendDateTime: "10:30:02 PM",
     },
     {
-      id: "sdfsdfsfs",
       sender: {
         id: 1,
         name: "Sanaz",
@@ -51,7 +48,6 @@ export default class ChatPageMockData {
 Use .flex-row to set a horizontal direction (the browser default), or .flex-row-reverse to start the horizontal direction from the opposite side.`,
       sendDateTime: "8:03:45 AM",
       repliedTo: {
-        id: "grgergw",
         sender: {
           id: 1,
           name: "Sanaz",
@@ -69,7 +65,6 @@ Use .flex-row to set a horizontal direction (the browser default), or .flex-row-
       },
     },
     {
-      id: "sbfjsdh",
       sender: {
         id: 1001,
         name: "Sanaz Khanummm",

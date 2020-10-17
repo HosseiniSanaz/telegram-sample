@@ -14,7 +14,8 @@ export default class ChatListMockData {
         type: "User",
         username: "74fdjvhbhj45y738",
       },
-      lastMessage: "Hello",
+      lastMessage:
+        "Hello Set the direction of flex items in a flex container with direction utilities. In most cases you can omit the horiz",
       lastMessageDateTime: "now",
       newMessageCount: 2,
     },

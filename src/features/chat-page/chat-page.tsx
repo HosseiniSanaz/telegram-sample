@@ -19,11 +19,15 @@ const ChatPage = ({ username }: Props) => {
   });
 
   const [newMessage, setNewMessage] = useState<ChatItem>();
+  const [replyMessage, setReplyMessage] = useState<ChatItem>();
   useEffect(() => {
     setTargetUser(ChatUtil.getCurrentUser(username));
   }, [username]);
   const getMessage = (message: ChatItem) => {
     setNewMessage(message);
+  };
+  const removeReply = () => {
+    setReplyMessage(undefined);
   };
   return (
     <div className="h-100">
@@ -34,8 +38,14 @@ const ChatPage = ({ username }: Props) => {
       )}
       {Boolean(username) && Boolean(targetUser.username) && (
         <>
-          <ChatContainer username={username || targetUser.username} newMessage={newMessage} />
-          <MessageBox targetUser={targetUser} sendMessage={getMessage} />
+          <ChatContainer username={username || targetUser.username} newMessage={newMessage} onReply={setReplyMessage} />
+
+          <MessageBox
+            targetUser={targetUser}
+            sendMessage={getMessage}
+            repliedToMessage={replyMessage}
+            removeReply={removeReply}
+          />
         </>
       )}
     </div>

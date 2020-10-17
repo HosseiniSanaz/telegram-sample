@@ -6,12 +6,15 @@ import { Context } from "../../AppContext";
 import ChatItem from "./chat-item";
 import Util from "utilities/utilities";
 import ChatUtil from "utilities/chat-utilities";
+import Chat from "./chat-container/chat";
 interface Props {
   targetUser: UserInfoItem;
   sendMessage: (message: ChatItem) => void;
+  repliedToMessage?: ChatItem;
+  removeReply: () => void;
 }
 
-const MessageBox = ({ targetUser, sendMessage }: Props) => {
+const MessageBox = ({ targetUser, sendMessage, repliedToMessage, removeReply }: Props) => {
   const appContext = useContext(Context);
   const [message, setMessage] = useState<string>("");
   const sendItem = () => {
@@ -20,14 +23,24 @@ const MessageBox = ({ targetUser, sendMessage }: Props) => {
         text: message,
         sender: appContext?.state.user,
         sendDateTime: Util.formatAMPM(new Date()),
+        repliedTo: repliedToMessage,
       };
       sendMessage(chatItem);
+      removeReply();
       setMessage("");
     }
   };
 
   return (
     <div className="position-absolute bottom-0 w-100 my-5">
+      {repliedToMessage && (
+        <div className="w-50 d-flex justify-content-between align-items-center m-auto">
+          <Chat chatItem={repliedToMessage} isRepliedMessage={true} />
+          <div className="d-flex align-self-start pt-3 cursor-pointer" onClick={removeReply}>
+            <i className="fa fa-times"></i>
+          </div>
+        </div>
+      )}
       <div className="w-75 d-flex justify-content-center m-auto">
         <DKAvatar
           size={60}

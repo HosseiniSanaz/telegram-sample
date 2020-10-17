@@ -14,7 +14,7 @@ const TGHeader = ({ username }: Props) => {
     <>
       <div className="row w-100">
         <div className="col-4 d-flex align-items-center">
-          <span className="mr-5 cursor-pointer" onClick={() => setOpenContacts(true)}>
+          <span className="mr-5 cursor-pointer" title="Contacts" onClick={() => setOpenContacts(true)}>
             <i className="fas fa-users text-white font-size-h2"></i>
           </span>
           <span className="font-size-h3"> Telegram </span>

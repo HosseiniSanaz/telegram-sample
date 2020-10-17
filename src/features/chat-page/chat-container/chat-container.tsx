@@ -6,9 +6,10 @@ import Chat from "./chat";
 interface Props {
   username: string;
   newMessage?: ChatItem;
+  onReply: (repliedMessage: ChatItem) => void;
 }
 
-const ChatContainer = ({ username, newMessage }: Props) => {
+const ChatContainer = ({ username, newMessage, onReply }: Props) => {
   const [chats, setChats] = useState<ChatItem[]>([]);
   const allChat = useService<ChatItem[]>(ChatPageServices.getChat(username));
   let messagesEnd: any;
@@ -27,12 +28,13 @@ const ChatContainer = ({ username, newMessage }: Props) => {
   useEffect(() => {
     scrollToBottom();
   }, [JSON.stringify(chats)]);
+
   return (
     <div className="mr-2 h-450px card-scroll card-scroll-thick">
       <div className=" w-75 d-flex flex-column mx-auto">
         {allChat.status === "loaded" &&
           chats.map((chat, index) => {
-            return <Chat chatItem={chat} key={index} />;
+            return <Chat chatItem={chat} key={index} onReply={onReply} />;
           })}
         <div
           style={{ float: "left", clear: "both" }}

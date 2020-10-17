@@ -41,12 +41,14 @@ const ProfileHeader = (): ReactElement => {
           onClick={() => appContext?.actions.showProfile(false)}
         >
           <div className="symbol symbol-45 symbol-circle shadow-md">
-            <i
-              className={
-                "symbol-label font-size-h2 fa " +
-                (appContext?.state.currentUserProfile.isGroupAdmin ? "fa-image" : "fa-comment-alt")
-              }
-            ></i>
+            <span className="symbol-label">
+              <i
+                className={
+                  "font-size-h2 fa " +
+                  (appContext?.state.currentUserProfile.isGroupAdmin ? "fa-camera" : "fa-comment-alt")
+                }
+              ></i>
+            </span>
           </div>
         </Link>
       </div>

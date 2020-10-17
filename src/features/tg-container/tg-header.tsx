@@ -35,7 +35,7 @@ const TGHeader = ({ username }: Props) => {
           </div>
         )}
       </div>
-      <Contacts openModal={openContacts} />
+      <Contacts openModal={openContacts} onCloseContactModal={() => setOpenContacts(false)} />
     </>
   );
 };

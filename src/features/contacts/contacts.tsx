@@ -8,8 +8,9 @@ import ContactsServices from "./contacts-services";
 import ContactsHeader from "./contact-header";
 interface Props {
   openModal: Boolean;
+  onCloseContactModal: () => void;
 }
-const Contacts = ({ openModal }: Props) => {
+const Contacts = ({ openModal, onCloseContactModal }: Props) => {
   const [open, setOpen] = useState<Boolean>(false);
   const [contacts, setContacts] = useState<UserInfoItem[]>([]);
   useEffect(() => {
@@ -19,7 +20,10 @@ const Contacts = ({ openModal }: Props) => {
   useEffect(() => {
     if (allContacts.status === "loaded") setContacts(allContacts.payload);
   }, [allContacts.status]);
-  const onCloseContacts = () => setOpen(false);
+  const onCloseContacts = () => {
+    setOpen(false);
+    onCloseContactModal();
+  };
 
   const onFilterContacts = (searchTerm: string) => {
     if (allContacts.status === "loaded") {

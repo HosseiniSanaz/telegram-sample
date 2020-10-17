@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useContext, useEffect, useState } from "react";
 import UserChatItem from "./user-chat-item";
 import { useService } from "hooks/useService";
 import ChatListServices from "./chat-list-services";
@@ -7,11 +7,13 @@ import "./chat-list.scss";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SearchBox from "./search-box";
-interface Props {
-  onChangeChat?: (chatId?: number) => void;
-  openNewChat?: () => void;
-}
-const ChatList = ({ onChangeChat, openNewChat }: Props): ReactElement => {
+import ChatUtil from "utilities/chat-utilities";
+import { Context } from "AppContext";
+// interface Props {
+//   openNewChat?: () => void;
+// }
+const ChatList = (): ReactElement => {
+  const appContext = useContext(Context);
   const [chatItems, setChatItems] = useState<UserChatItem[]>([]);
   const [selectedChatId, setSelectedChatId] = useState<number>(0);
   const chatList = useService<UserChatItem[]>(ChatListServices.getAllChats());
@@ -19,14 +21,26 @@ const ChatList = ({ onChangeChat, openNewChat }: Props): ReactElement => {
     if (chatList.status === "loaded") setChatItems(chatList.payload);
   }, [chatList.status]);
 
+  const onFilterChats = (searchTerm: string) => {
+    if (chatList.status === "loaded") {
+      const filteredContact = chatList.payload.filter(chat => {
+        return (
+          chat.user.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
+          chat.user.username.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+        );
+      });
+      setChatItems(filteredContact);
+    }
+  };
   return (
     <div>
       <Card.Header className="border-0 p-4">
-        <SearchBox />
+        <SearchBox onSearch={onFilterChats} />
       </Card.Header>
 
       <div className="card-scroll h-500px">
         {chatItems.map((cm: UserChatItem, index: number) => {
+          const isSelf = ChatUtil.isSelf(appContext?.state.user.username || "", cm.user.username);
           return (
             <Link to={`/chat/${cm.user.username}`} key={"chat-item-" + index}>
               <div
@@ -45,6 +59,7 @@ const ChatList = ({ onChangeChat, openNewChat }: Props): ReactElement => {
                     pictureTextPlaceholder={cm.user.profilePictureTextPlaceholder}
                     size={50}
                     type="circle"
+                    isSelf={isSelf}
                   />
                   <div className="d-flex flex-column">
                     <span
@@ -52,7 +67,7 @@ const ChatList = ({ onChangeChat, openNewChat }: Props): ReactElement => {
                         "font-weight-bold font-size-lg " + (selectedChatId === cm.user.id ? "" : "text-dark-75")
                       }
                     >
-                      {cm.user.name}
+                      {isSelf ? "Saved Messages" : cm.user.name}
                     </span>
                     <span
                       className={

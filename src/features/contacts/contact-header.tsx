@@ -4,7 +4,7 @@ interface Props {
 }
 const ContactsHeader = ({ onCloseContacts }: Props) => {
   return (
-    <div className=" d-flex justify-content-between font-weight-bolder">
+    <div className="w-100 d-flex justify-content-between font-weight-bolder">
       <div className="d-flex align-items-start">Contacts</div>
       <div className="d-flex justify-content-between align-items-end">
         <span>Edit</span>

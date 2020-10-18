@@ -75,7 +75,8 @@ const ChatList = ({ emptyUserEmptyUnread }: Props): ReactElement => {
                   <div className="d-flex flex-column">
                     <span
                       className={
-                        "font-weight-bold font-size-lg " + (selectedChatId === cm.user.id ? "" : "text-dark-75")
+                        "font-weight-bold font-size-lg display-chat-name text-truncate d-inline-block " +
+                        (selectedChatId === cm.user.id ? "" : "text-dark-75")
                       }
                     >
                       {isSelf ? "Saved Messages" : cm.user.name}
@@ -85,7 +86,6 @@ const ChatList = ({ emptyUserEmptyUnread }: Props): ReactElement => {
                         "font-size-sm text-truncate d-inline-block display-last-message " +
                         (selectedChatId === cm.user.id ? "" : "text-muted")
                       }
-                      // style={{ maxWidth: "250px" }}
                     >
                       {cm.lastMessage}
                     </span>

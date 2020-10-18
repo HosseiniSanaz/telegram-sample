@@ -2,20 +2,32 @@
   .display-last-message {
     max-width: 100px;
   }
+  .display-chat-name{
+    max-width: 90px;
+  }
 }
 @media (min-width: 800px) {
   .display-last-message {
     max-width: 170px;
+  }
+  .display-chat-name{
+    max-width: 150px;
   }
 }
 @media (min-width: 1024px) {
   .display-last-message {
     max-width: 200px;
   }
+  .display-chat-name{
+    max-width: 200px;
+  }
 }
 @media (min-width: 1440px) {
   .display-last-message {
     max-width: 250px;
+  }
+  .display-chat-name{
+    max-width: 260px;
   }
 }
 @media (min-width: 2000px) {

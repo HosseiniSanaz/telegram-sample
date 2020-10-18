@@ -3,6 +3,7 @@ import { useService } from "hooks/useService";
 import ChatPageServices from "../chat-page-services";
 import ChatItem from "../chat-item";
 import Chat from "./chat";
+import useWindowSizes from "hooks/useWindowSize";
 interface Props {
   username: string;
   newMessage?: ChatItem;
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const ChatContainer = ({ username, newMessage, onReply }: Props) => {
+  const windowSize = useWindowSizes();
   const [chats, setChats] = useState<ChatItem[]>([]);
   const allChat = useService<ChatItem[]>(ChatPageServices.getChat(username));
   let messagesEnd: any;
@@ -31,7 +33,7 @@ const ChatContainer = ({ username, newMessage, onReply }: Props) => {
 
   return (
     <div className="mr-2 h-450px card-scroll card-scroll-thick">
-      <div className=" w-75 d-flex flex-column mx-auto">
+      <div className={"d-flex flex-column mx-auto " + (windowSize.width > 800 ? "w-75" : "w-100")}>
         {allChat.status === "loaded" &&
           chats.map((chat, index) => {
             return <Chat chatItem={chat} key={index} onReply={onReply} />;

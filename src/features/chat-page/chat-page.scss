@@ -8,3 +8,31 @@
 .message-text {
   white-space: pre-line !important;
 }
+.display-chat-message {
+  max-width: 150px;
+}
+@media (min-width: 500px) {
+  .display-chat-message {
+    max-width: 220px;
+  }
+}
+@media (min-width: 800px) {
+  .display-chat-message {
+    max-width: 275px;
+  }
+}
+@media (min-width: 1024px) {
+  .display-chat-message {
+    max-width: 320px;
+  }
+}
+@media (min-width: 1440px) {
+  .display-chat-message {
+    max-width: 400px;
+  }
+}
+@media (min-width: 2000px) {
+  .display-chat-message {
+    max-width: 400px;
+  }
+}

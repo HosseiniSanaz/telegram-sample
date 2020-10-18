@@ -1,5 +1,5 @@
 import UserInfoItem from "entities/user-info-item";
-import UserListMock from "features/chat-list/chat-list-mock";
+import UserListMock from "features/contacts/contacts-mock";
 
 export default class ChatUtilities {
   public static getCurrentUser = (username?: string): UserInfoItem => {
@@ -10,10 +10,10 @@ export default class ChatUtilities {
       type: "User",
       profilePictureTextPlaceholder: "TE",
     };
-    const allUser = UserListMock.chats;
+    const allUser = UserListMock.contacts;
     allUser.forEach(user => {
-      if (user.user.username === username) {
-        defaultUser = user.user;
+      if (user.username === username) {
+        defaultUser = user;
       }
     });
     return defaultUser;

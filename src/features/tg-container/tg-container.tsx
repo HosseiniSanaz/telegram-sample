@@ -11,7 +11,7 @@ interface Props {
 export const Container = ({ match }: Props) => {
   const [userEmptyUnread, setUser] = useState<string>();
   return (
-    <div className="container-fluid">
+    <div className="container-fluid px-0">
       <div className="d-flex justify-content-between align-items-center">
         <DKCard fitBody={true} className=" mx-auto tg-container-size">
           <DKCardHeader hasComplexHeader={true} className="tg-primary" textColor="white">

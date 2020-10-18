@@ -1,20 +1,25 @@
-@media (min-width: 576px) {
-  .display-last-message {
-    max-width: 80px;
-  }
-}
-@media (min-width: 992px) {
+@media (min-width: 400px) {
   .display-last-message {
     max-width: 100px;
   }
 }
+@media (min-width: 800px) {
+  .display-last-message {
+    max-width: 170px;
+  }
+}
 @media (min-width: 1024px) {
   .display-last-message {
-    max-width: 130px;
+    max-width: 200px;
   }
 }
 @media (min-width: 1440px) {
   .display-last-message {
-    max-width: 230px;
+    max-width: 250px;
+  }
+}
+@media (min-width: 2000px) {
+  .display-last-message {
+    max-width: 280px;
   }
 }

@@ -1,24 +1,32 @@
 @media (min-width: 400px) {
   .display-last-message {
-    max-width: 100px;
+    max-width: 45px;
   }
-  .display-chat-name{
-    max-width: 90px;
+  .display-chat-name {
+    max-width: 45px;
+  }
+}
+@media (min-width: 600px) {
+  .display-last-message {
+    max-width: 76px;
+  }
+  .display-chat-name {
+    max-width: 70px;
   }
 }
 @media (min-width: 800px) {
   .display-last-message {
-    max-width: 170px;
+    max-width: 144px;
   }
-  .display-chat-name{
+  .display-chat-name {
     max-width: 150px;
   }
 }
 @media (min-width: 1024px) {
   .display-last-message {
-    max-width: 200px;
+    max-width: 185px;
   }
-  .display-chat-name{
+  .display-chat-name {
     max-width: 200px;
   }
 }
@@ -26,7 +34,7 @@
   .display-last-message {
     max-width: 250px;
   }
-  .display-chat-name{
+  .display-chat-name {
     max-width: 260px;
   }
 }

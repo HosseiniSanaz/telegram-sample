@@ -20,6 +20,7 @@ const Contact = ({ userInfo, isAdmin }: Props) => {
           size={50}
           type="circle"
           onShowProfile={() => appContext?.actions.showProfile(true, userInfo)}
+          status={userInfo.status}
         />
         <div className="d-flex flex-column">
           <div className="tg-user-text cursor-pointer" onClick={() => appContext?.actions.showProfile(true, userInfo)}>

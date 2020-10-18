@@ -77,6 +77,7 @@ const MessageBox = ({ targetUser, sendMessage, repliedToMessage, removeReply }: 
           className="ml-4"
           onShowProfile={() => appContext?.actions.showProfile(true, targetUser)}
           isSelf={ChatUtil.isSelf(appContext?.state.user.username || "", targetUser.username)}
+          status={targetUser.status}
         />
       </div>
     </div>

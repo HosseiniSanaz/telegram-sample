@@ -70,6 +70,7 @@ const ChatList = ({ emptyUserEmptyUnread }: Props): ReactElement => {
                     size={50}
                     type="circle"
                     isSelf={isSelf}
+                    status={cm.user.status}
                   />
                   <div className="d-flex flex-column">
                     <span
@@ -97,7 +98,14 @@ const ChatList = ({ emptyUserEmptyUnread }: Props): ReactElement => {
                     {cm.lastMessageDateTime}
                   </span>
                   {Boolean(cm.newMessageCount) && (
-                    <span className="label label-sm label-success mt-1">{cm.newMessageCount}</span>
+                    <span
+                      className={
+                        "label label-sm mt-1 font-weight-bolder " +
+                        (cm.user.isMuted ? "label-light-dark text-white" : "label-success")
+                      }
+                    >
+                      {cm.newMessageCount}
+                    </span>
                   )}
                 </div>
               </div>

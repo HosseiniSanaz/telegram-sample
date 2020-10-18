@@ -11,4 +11,5 @@ export default interface UserInfoItem {
   role?: string;
   members?: UserInfoItem[];
   isGroupAdmin?: boolean;
+  isMuted?: boolean;
 }

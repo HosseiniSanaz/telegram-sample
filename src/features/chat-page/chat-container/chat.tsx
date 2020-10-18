@@ -25,6 +25,7 @@ const Chat = ({ chatItem, isRepliedMessage, onReply, className }: Props) => {
                 size={45}
                 type="circle"
                 onShowProfile={() => appContext?.actions.showProfile(true, chatItem.sender)}
+                status={chatItem.sender?.status}
               />
             )}
             {isRepliedMessage && <span className="bullet bullet-bar tg-secondary align-self-stretch mr-3"></span>}

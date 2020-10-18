@@ -6,11 +6,20 @@ interface Props {
 }
 const MembersList = ({ members = [] }: Props): ReactElement => {
   return (
-    <>
-      {members.map(member => {
-        return <Contact userInfo={member} />;
-      })}
-    </>
+    <div className="bg-white mt-n1">
+      <div className="my-5 ml-10 mr-0 row">
+        <div className="col-2 pt-3">
+          <i className="fas fa-user-friends icon-xl"></i>
+        </div>
+        <div className="col-10 pl-0">
+          <div className="card-scroll my-1 h-200px overflow-x-hidden">
+            {members.map(member => {
+              return <Contact userInfo={member} />;
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 export default MembersList;

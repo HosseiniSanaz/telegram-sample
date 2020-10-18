@@ -14,6 +14,7 @@ interface Props {
   color?: string;
   onShowProfile?: () => void;
   isSelf?: boolean;
+  status?: string;
 }
 const DKAvatar = ({
   imageUrl,
@@ -28,6 +29,7 @@ const DKAvatar = ({
   color = "symbol-light-info",
   onShowProfile,
   isSelf = false,
+  status,
 }: Props): ReactElement => {
   return (
     <div
@@ -45,9 +47,12 @@ const DKAvatar = ({
       }}
     >
       {isSelf && (
-        <div className="font-size-h6 symbol-label font-weight-bolder">
-          <i className="fa fa-bookmark text-white font-size-h1"> </i>
-        </div>
+        <>
+          <div className="font-size-h6 symbol-label font-weight-bolder">
+            <i className="fa fa-bookmark text-white font-size-h1"> </i>
+          </div>
+          <i className="symbol-badge symbol-badge-bottom bg-success"></i>
+        </>
       )}
       {!isSelf && (
         <>
@@ -64,6 +69,7 @@ const DKAvatar = ({
           {!Boolean(imageUrl) && (
             <div className="font-size-h6 symbol-label font-weight-bolder">{pictureTextPlaceholder}</div>
           )}
+          {status === "online" && <i className="symbol-badge symbol-badge-bottom bg-success"></i>}
         </>
       )}
 

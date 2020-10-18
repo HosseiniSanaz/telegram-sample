@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import "./../../App.scss";
 import { Context } from "./../../AppContext";
 import routes from "../../routes";
@@ -20,6 +20,9 @@ export const AppContainer = () => {
       {routes.map(route => (
         <Route key={route.path} {...route} />
       ))}
+      <Route exact path="/">
+        <Redirect to="/chat" />
+      </Route>
     </Switch>
   );
 };

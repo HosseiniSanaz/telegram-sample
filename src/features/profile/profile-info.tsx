@@ -13,8 +13,22 @@ const ProfileInfo = (): ReactElement => {
               <i className="fa fa-phone icon-xl mr-5" />
             </div>
             <div className="col-10 d-inline border-bottom pb-5 pl-0">
-              <div className="font-size-lg">{appContext?.state.currentUserProfile.telephoneNumber}</div>
-              <div className="text-muted font-size-xs font-weight-light">phone</div>
+              <div>
+                <div className="font-size-lg">{appContext?.state.currentUserProfile.telephoneNumber}</div>
+                <div className="text-muted font-size-xs font-weight-light">phone</div>
+              </div>
+              {appContext.state.currentUserProfile.username.startsWith("@") && (
+                <div className="mt-3">
+                  <div className="font-size-lg">{appContext?.state.currentUserProfile.username}</div>
+                  <div className="text-muted font-size-xs font-weight-light">UserName</div>
+                </div>
+              )}
+              {appContext.state.currentUserProfile.bio && (
+                <div className="mt-3">
+                  <div className="font-size-lg">{appContext?.state.currentUserProfile.bio}</div>
+                  <div className="text-muted font-size-xs font-weight-light">About</div>
+                </div>
+              )}
             </div>
           </div>
         )}

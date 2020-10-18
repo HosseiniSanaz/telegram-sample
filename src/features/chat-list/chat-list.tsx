@@ -67,7 +67,7 @@ const ChatList = ({ emptyUserEmptyUnread }: Props): ReactElement => {
                     className="mr-2"
                     imageUrl={cm.user.profilePicture}
                     pictureTextPlaceholder={cm.user.profilePictureTextPlaceholder}
-                    size={50}
+                    size={45}
                     type="circle"
                     isSelf={isSelf}
                     status={cm.user.status}
@@ -82,10 +82,10 @@ const ChatList = ({ emptyUserEmptyUnread }: Props): ReactElement => {
                     </span>
                     <span
                       className={
-                        "font-size-sm text-truncate d-inline-block " +
+                        "font-size-sm text-truncate d-inline-block display-last-message " +
                         (selectedChatId === cm.user.id ? "" : "text-muted")
                       }
-                      style={{ maxWidth: "250px" }}
+                      // style={{ maxWidth: "250px" }}
                     >
                       {cm.lastMessage}
                     </span>

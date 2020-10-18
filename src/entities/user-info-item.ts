@@ -12,4 +12,5 @@ export default interface UserInfoItem {
   members?: UserInfoItem[];
   isGroupAdmin?: boolean;
   isMuted?: boolean;
+  groupLink?: string;
 }
